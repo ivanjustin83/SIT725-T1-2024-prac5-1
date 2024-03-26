@@ -1,0 +1,26 @@
+{
+  "name": "sit725-t1-2024-prac3",
+  "version": "1.0.0",
+  "description": "Practical 3",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanjustin83/SIT725-T1-2024-prac3.git"
+  },
+  "keywords": [
+    "Practical",
+    "3"
+  ],
+  "author": "Ivan Justin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanjustin83/SIT725-T1-2024-prac3/issues"
+  },
+  "homepage": "https://github.com/ivanjustin83/SIT725-T1-2024-prac3#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
