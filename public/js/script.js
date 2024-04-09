@@ -3,30 +3,56 @@ var clickMe = () => {
 }
 const submitForm = () => {
     let formData = {};
-    formData.first_name = $('#first_name').val();
-    formData.last_name = $('#last_name').val();
-    formData.password = $('#password').val();
-    formData.email = $('#email').val();
+    formData.title = $('#first_name').val();
+    formData.colour = $('#last_name').val();
+    formData.link = $('#password').val();
+    formData.description = $('#email').val();
     console.log("Form Data Submitted: ", formData);
+
+    fetch("/api/postcards", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }).then(response => {
+        return response.text
+    }).then(result => {
+        alert("Results posted!");
+        console.log(result);
+    }).catch(err => {
+        alert("Results failed to post!");
+        console.log(err);
+    })
 }
 
 
-const cardList = [
-    {
-        title: "Kitten 2",
-        image:
-            "images/kitten.jpg", link:
-            "About Kitten 2",
-        desciption: "Demo desciption about kitten 2"
-    },
-    {
-        title: "Kitten 3",
-        image:
-            "images/kitten.jpg", link:
-            "About Kitten 3",
-        desciption: "Demo desciption about kitten 3"
-    }
-]
+// const cardList = [
+//     {
+//         title: "Kitten 2",
+//         image:
+//             "images/kitten.jpg", link:
+//             "About Kitten 2",
+//         desciption: "Demo desciption about kitten 2"
+//     },
+//     {
+//         title: "Kitten 3",
+//         image:
+//             "images/kitten.jpg", link:
+//             "About Kitten 3",
+//         desciption: "Demo desciption about kitten 3"
+//     }
+// ]
+
+const getCards = () => {
+    $.get('/api/cards', (response) => {
+        // if (response.statusCode == 200) {
+        //     console.log(response.data);
+        //     return response.data
+        // }
+        console.log("This is the response data" + JSON.stringify(response.data))
+    })
+}
 
 const addCards =
     (items) => {
@@ -43,9 +69,16 @@ const addCards =
     };
 
 
-$(document).ready(function () {
+$(document).ready(async function () {
     $('.materialboxed').materialbox();
-    addCards(cardList);
+    getCards();
+    // try {
+    //     const cards = await getCards();
+    //     console.log(cards);
+    //     addCards(cards);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
     $('#modal1').modal();
     $('#clickMeButton').click(function () {
         $('#modal1').modal('open');
@@ -55,3 +88,29 @@ $(document).ready(function () {
     })
     $('#modal1').modal();
 });
+// var cards;
+
+// function waitForDOMReady() {
+//     return new Promise(function (resolve) {
+//         $(document).ready(function () {
+//             resolve();
+//         });
+//     });
+// }
+
+// async function main() {
+//     await waitForDOMReady();
+//     cards = getCards();
+//     console.log(cards);
+//     $('.materialboxed').materialbox();
+//     $('#modal1').modal();
+//     $('#clickMeButton').click(function () {
+//         $('#modal1').modal('open');
+//     })
+//     $('#formSubmit').click(() => {
+//         submitForm();
+//     })
+//     $('#modal1').modal();
+// }
+
+// main();

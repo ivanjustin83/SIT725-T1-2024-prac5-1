@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/ivanjustin83/SIT725-T1-2024-prac3#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0"
   }
 }
