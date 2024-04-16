@@ -50,7 +50,8 @@ const getCards = () => {
         //     console.log(response.data);
         //     return response.data
         // }
-        console.log("This is the response data" + JSON.stringify(response.data))
+        console.log("This is the response data" + response)
+        return response;
     })
 }
 
